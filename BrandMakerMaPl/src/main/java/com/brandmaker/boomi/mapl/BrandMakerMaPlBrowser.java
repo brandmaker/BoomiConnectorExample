@@ -45,7 +45,7 @@ public class BrandMakerMaPlBrowser extends BaseBrowser implements ConnectionTest
 		TREES("Get Years"),
 		YEAR("Get running fiscal year"),
 		NODE("Get Nodes"),
-		BUDGET("Get Budgets"),
+		BUDGET("Get Budgets"), 
 		
 		;
 		
