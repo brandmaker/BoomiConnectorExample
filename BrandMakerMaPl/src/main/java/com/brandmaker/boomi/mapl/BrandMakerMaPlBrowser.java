@@ -28,7 +28,7 @@ import com.boomi.connector.api.ui.BrowseField;
 import com.boomi.connector.api.ui.DataType;
 import com.boomi.connector.api.ui.DisplayType;
 import com.boomi.connector.util.BaseBrowser;
-import com.brandmaker.mapl.MapsRestWrapper;
+import com.brandmaker.rest.mapl.MapsRestWrapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

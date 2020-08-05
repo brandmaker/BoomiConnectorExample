@@ -22,7 +22,7 @@ import com.boomi.connector.api.OperationStatus;
 import com.boomi.connector.api.PropertyMap;
 import com.boomi.connector.api.ResponseUtil;
 import com.boomi.connector.util.BaseGetOperation;
-import com.brandmaker.mapl.MapsRestWrapper;
+import com.brandmaker.rest.mapl.MapsRestWrapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

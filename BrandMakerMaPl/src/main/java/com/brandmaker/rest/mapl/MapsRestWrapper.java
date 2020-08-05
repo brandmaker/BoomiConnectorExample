@@ -1,4 +1,4 @@
-package com.brandmaker.mapl;
+package com.brandmaker.rest.mapl;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
