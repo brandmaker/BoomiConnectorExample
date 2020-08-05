@@ -30,7 +30,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/BrandMakerJM"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/BrandMakerMaPl"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BrandMakerConnector"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8-u92"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
