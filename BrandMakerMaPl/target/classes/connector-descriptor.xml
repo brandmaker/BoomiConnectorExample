@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<GenericConnectorDescriptor
+    onPremiseBrowseOnly="false"
+    requireConnectionForBrowse="true"
+	disableDefaultObjectTypeFilter="true">
+    <description>Boomi Connector for BrandMaker Marketing Planner</description>
+    
+	<field id="url" label="URL" type="string">
+        <helpText>Service Base URL</helpText>
+        <defaultValue>http://is-dev2.brandmaker.com</defaultValue>
+    </field>
+    
+    <field id="login" label="User" type="string">
+        <helpText>User ID</helpText>
+    </field>
+    
+    <field id="password" label="Password" type="password">
+    	<helpText>Password</helpText>
+    </field>
+    
+    <!-- 
+    	see https://help.boomi.com/bundle/connectors/page/int-Describing_the_capabilities_of_a_custom_connector_596e92e5-bcf4-4a19-926c-42ffd33799ac.html
+    	only with CAS running!
+    	
+    <field id="oAuth" label="oAuth2" type="oauth">
+    	<helpText>oAuth2 CredentialsL</helpText>
+    	<oauth2FieldConfig>
+	    	<authorizationTokenEndpoint>
+	    		<url></url>
+	    	</authorizationTokenEndpoint>
+	    	<authorizationParameters />
+	    	<accessTokenEndpoint />
+	    	<accessTokenParameters />
+	    	<scope />
+	    	<grantType>
+	    		<defaultValue>Authorization Code</defaultValue>
+	    	</grantType>
+	    </oauth2FieldConfig>
+    </field>
+    -->
+    
+    <testConnection 
+    	method="CUSTOM"
+    	operationType="GET">
+    </testConnection>
+    
+	<operation 
+		types="GET"
+	 >
+	
+	</operation>
+	
+	<operation 
+		types="CREATE|UPDATE" >
+	
+	</operation>
+
+	
+	
+	<!-- operation types="QUERY"/ -->
+</GenericConnectorDescriptor>
