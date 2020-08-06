@@ -63,6 +63,7 @@ com\brandmaker\soap\jobmanager\FindWorkflowTypeById.class
 org\json\CookieList.class
 com\brandmaker\soap\jobmanager\FindAllLocalesResponse.class
 com\brandmaker\soap\jobmanager\GetLastChangesByIdResponse.class
+com\brandmaker\boomi\BrandMakerBrowser$1.class
 com\brandmaker\soap\jobmanager\DseObjectTypeDto.class
 com\brandmaker\soap\jobmanager\InnerWorkflowStepDto.class
 com\brandmaker\boomi\mapl\MapsQueryOperation.class
@@ -133,6 +134,7 @@ com\brandmaker\soap\jobmanager\OperatorType.class
 com\brandmaker\soap\jobmanager\InvalidAssigneeFault.class
 com\brandmaker\boomi\jm\BrandMakerJMGetOperation.class
 org\json\JSONObject.class
+com\brandmaker\boomi\BrandMakerBrowser.class
 com\brandmaker\boomi\mapl\MapsGetOperation$1.class
 com\brandmaker\soap\jobmanager\WorkflowStepDto.class
 com\brandmaker\boomi\jm\BrandMakerJMConnection.class
