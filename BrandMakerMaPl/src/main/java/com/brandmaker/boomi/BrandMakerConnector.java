@@ -13,6 +13,13 @@ import com.brandmaker.boomi.mapl.MapsConnection;
 import com.brandmaker.boomi.mapl.MapsGetOperation;
 import com.brandmaker.boomi.mapl.MapsQueryOperation;
 
+/**
+ * "Master" connector to the BrandMaker suite. Currently, it implements only few MaPl end-points. It can be extended by just adding new Operations to OperationsConstants and extending the switches below accordingly.
+ * The according browser, get, query, create and update classes have to be implemented then according to the given MaPl example.
+ * 
+ * @author axel.amthor
+ *
+ */
 public class BrandMakerConnector extends BaseConnector {
 
 	private static final Logger Logger = java.util.logging.Logger.getLogger(BrandMakerConnector.class.getName());
@@ -20,26 +27,14 @@ public class BrandMakerConnector extends BaseConnector {
     @Override
     public Browser createBrowser(BrowseContext context) {
     	
-		ConnectorOperations objectType = OperationsConstants.ConnectorOperations.valueOf( ((OperationContext)context).getObjectTypeId() );
-		
-		switch ( objectType ) {
-			case TREES:
-			case YEAR:
-			case BUDGET:
-			case NODE:
-				Logger.severe( "Invoking Marketing Planner Sub Connector");
-				return new MapsBrowser(createConnection(context));
+    	return new BrandMakerBrowser(createConnection(context));
 				
-			default:
-				return null;
-		}
-        
     }    
 
     @Override
     protected Operation createGetOperation(OperationContext context) {
     	
-    	ConnectorOperations objectType = OperationsConstants.ConnectorOperations.valueOf( ((OperationContext)context).getObjectTypeId() );
+    	ConnectorOperations objectType = OperationsConstants.ConnectorOperations.valueOf( context.getObjectTypeId() );
 		
 		switch ( objectType ) {
 			case TREES:
@@ -59,7 +54,7 @@ public class BrandMakerConnector extends BaseConnector {
     @Override
     protected Operation createQueryOperation(OperationContext context) {
     	
-    	ConnectorOperations objectType = OperationsConstants.ConnectorOperations.valueOf( ((OperationContext)context).getObjectTypeId() );
+    	ConnectorOperations objectType = OperationsConstants.ConnectorOperations.valueOf( context.getObjectTypeId() );
 		
 		switch ( objectType ) {
 			case TREES:
@@ -77,17 +72,9 @@ public class BrandMakerConnector extends BaseConnector {
    
     private MapsConnection createConnection(BrowseContext context) {
     	
-ConnectorOperations objectType = OperationsConstants.ConnectorOperations.valueOf( ((OperationContext)context).getObjectTypeId() );
-		
-		switch ( objectType ) {
-			case TREES:
-			case YEAR:
-			case BUDGET:
-			case NODE:
-				return new MapsConnection(context);
+    	
+    	// FIXME: We need a separation here as well as JM and MaPl have different login mechanics ...
+    	return new MapsConnection(context);
 				
-			default:
-				return null;
-		}
     }
 }
