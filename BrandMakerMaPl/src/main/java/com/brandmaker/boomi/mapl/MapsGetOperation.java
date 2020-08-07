@@ -83,13 +83,13 @@ public class MapsGetOperation extends BaseGetOperation {
 //		ResponseUtil.addSuccess(response, requestData, String.valueOf(200),  ResponseUtil.toPayload(gehtNichtMeldung));
 		
 		
-		boolean isLoggedIn = initRestWrapperAndLogin();
+		restWrapper = MapsHelpers.initRestWrapperAndLogin(getContext());
 		int httpStatusCode = 200;
 		Logger.severe("Object ID     : " + requestData.getObjectId());
 		Logger.severe("Dynamic props : " + requestData.getDynamicProperties().toString());
 		Logger.severe("User def props: " + requestData.getUserDefinedProperties().toString());
 		
-		if ( isLoggedIn ) {
+		if ( restWrapper != null ) {
 			JSONArray allNodes = new JSONArray();
 			try {
 				
@@ -195,9 +195,9 @@ public class MapsGetOperation extends BaseGetOperation {
 		Logger.severe("===============> Looking for current year: " + currentYear);
 		
 		Logger.severe(this.getContext().getObjectTypeId());
-		boolean isLoggedIn = initRestWrapperAndLogin();
+		restWrapper = MapsHelpers.initRestWrapperAndLogin(getContext());
 		
-		if ( isLoggedIn ) {
+		if ( restWrapper != null ) {
 			
 			TreeDTO[] loy = restWrapper.getListOfYears();
 			httpStatusCode = restWrapper.getHttpClient().getLastStatus();
@@ -255,9 +255,9 @@ public class MapsGetOperation extends BaseGetOperation {
 		int httpStatusCode = 200;
 		
 		Logger.severe(this.getContext().getObjectTypeId());
-		boolean isLoggedIn = initRestWrapperAndLogin();
+		restWrapper = MapsHelpers.initRestWrapperAndLogin(getContext());
 		
-		if ( isLoggedIn ) {
+		if ( restWrapper != null ) {
 			TreeDTO[] loy = restWrapper.getListOfYears();
 			httpStatusCode = restWrapper.getHttpClient().getLastStatus();
 			
@@ -288,26 +288,4 @@ public class MapsGetOperation extends BaseGetOperation {
         return (MapsConnection) super.getConnection();
     }
 	
-	public boolean initRestWrapperAndLogin() {
-		PropertyMap props = this.getContext().getConnectionProperties();
-		
-		String serviceUrl = props.getProperty("url");
-		String login = props.getProperty("login");
-		String password = props.getProperty("password");
-		
-		Logger.severe("Login to " + serviceUrl + " with " + login + " / " + password);
-		
-		/*
-		 * we need to pass in the connector cache for the credentials (tokens) to be persisted there
-		 */
-		restWrapper = new MapsRestWrapper(serviceUrl, this.getContext().getConnectorCache());
-		
-		/*
-		 * the "startLogin" method checks for cached credentials and if not available, starts the JWT login!
-		 */
-		boolean loggedIn = restWrapper.startLogin(login, password);
-		Logger.severe("success: " + Boolean.toString(loggedIn));
-		
-		return loggedIn;
-	}
 }

@@ -1,21 +1,20 @@
 package com.brandmaker.boomi;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.wsdl.Port;
-import javax.xml.ws.BindingProvider;
+import javax.xml.bind.JAXBException;
+import javax.xml.transform.TransformerException;
 
-import org.apache.axis.utils.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import com.bm.maps.BMonthDTO;
 import com.bm.maps.NodeDTO;
@@ -28,27 +27,31 @@ import com.boomi.connector.api.ObjectDefinitionRole;
 import com.boomi.connector.api.ObjectDefinitions;
 import com.boomi.connector.api.ObjectType;
 import com.boomi.connector.api.ObjectTypes;
-import com.boomi.connector.api.PropertyMap;
 import com.boomi.connector.util.BaseBrowser;
 import com.brandmaker.boomi.OperationsConstants.ConnectorOperations;
-import com.brandmaker.boomi.mapl.MapsBrowser;
+import com.brandmaker.boomi.jm.JMHelpers;
 import com.brandmaker.boomi.mapl.MapsConnection;
+import com.brandmaker.boomi.mapl.MapsHelpers;
 import com.brandmaker.rest.mapl.MapsRestWrapper;
-import com.brandmaker.soap.jobmanager.DetailedDto;
-import com.brandmaker.soap.jobmanager.DetailedList;
+import com.brandmaker.soap.jobmanager.DescriptionDto;
 import com.brandmaker.soap.jobmanager.DsePortTypeV2;
-import com.brandmaker.soap.jobmanager.DseServiceV2;
+import com.brandmaker.util.XmlUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
 import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
 
+/**
+ * Main boomi browser object. The actual browsing or operations are executed by the subclasses. 
+ * Currently, Job Manager and Marketing Planner are supported - and only some few endpoints as examples.
+ * 
+ * @author axel.amthor
+ *
+ */
 public class BrandMakerBrowser extends BaseBrowser implements ConnectionTester {
 
-private static final Logger Logger = java.util.logging.Logger.getLogger(MapsBrowser.class.getName());
-	
-	private MapsRestWrapper restWrapper = null;
+	private static final Logger Logger = java.util.logging.Logger.getLogger(BrandMakerBrowser.class.getName());
 	
 	@SuppressWarnings("unchecked")
 	public BrandMakerBrowser(MapsConnection conn) {
@@ -57,6 +60,13 @@ private static final Logger Logger = java.util.logging.Logger.getLogger(MapsBrow
         
     }
 
+	/**
+	 * Return the "Object Definitions" for he given boomi operation. 
+	 * These are basically schema definitions of the provided result objects, either as JSN Schema or as XSD.
+	 * These schemata then are parsed and stored as "Profiles" into boomi and can be used as data source descriptions.
+	 * Unclear, why we have different namings here and why a "Profile" is based on an "Object Definition" provided by a "Browser". Anyway, here it is ...
+	 * 
+	 */
 	@Override
 	public ObjectDefinitions getObjectDefinitions(String objectTypeId, Collection<ObjectDefinitionRole> roles) {
 		
@@ -68,20 +78,32 @@ private static final Logger Logger = java.util.logging.Logger.getLogger(MapsBrow
 		
 		ConnectorOperations objectType = OperationsConstants.ConnectorOperations.valueOf(objectTypeId);
 		
+		/*
+		 * The connector provides a list of all possible Object Types, regardless whether it's Job Manager or Marketing Planner or another BrandMaker Module.
+		 * We could probably offer a drop-down list in the connection where the user can select the target module, pick that up by the given 
+		 * "roles" parameter and provide a specific operations list for that module. As long as we only have very few endpoints implemented, this is regarded to not to be necessary.
+		 * 
+		 * Again: the naming is PitA: an ObjectType reflects to a "Profile"
+		 * 
+		 */
 		switch ( objectType ) {
 		
+			case CREATEJOB:
+				getXmlSchemaFromClass(defs, DescriptionDto.class);
+				break;
+				
 			case TREES:
 			case YEAR:
-				getSchemaFromClass(defs, TreeDTO[].class);
+				getJsonSchemaFromClass(defs, TreeDTO[].class);
 				break;
 				
 			case BUDGET:
-				getSchemaFromClass(defs, BMonthDTO.class);
+				getJsonSchemaFromClass(defs, BMonthDTO.class);
 				break;
 				
 			case NODE:
 			default:
-				getSchemaFromClass(defs, NodeDTO[].class);
+				getJsonSchemaFromClass(defs, NodeDTO[].class);
 			
 //				defs.getOperationFields().add(createListField());
 			
@@ -91,12 +113,49 @@ private static final Logger Logger = java.util.logging.Logger.getLogger(MapsBrow
 	}
 
 	/**
+	 * Generate the XSD schema from given PoJo class (mostly some ...DTO)
+	 * 
+	 * @param defs boomi ObjectDefinition collection
+	 * @param clazz the class to be serialized
+	 */
+	private void getXmlSchemaFromClass(ObjectDefinitions defs, Class<?> clazz) {
+
+		
+		try {
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			
+			XmlUtils.pojoToXSD(clazz, stream);
+			
+			String finalString = new String(stream.toByteArray());
+			Logger.severe(finalString);
+			
+			ObjectDefinition def = new ObjectDefinition();
+			def.setInputType(ContentType.XML);
+		    def.setOutputType(ContentType.XML);
+		    
+		    Document xsdDoc = XmlUtils.convertStringToDocument(finalString);
+		    Element start = xsdDoc.getDocumentElement();
+	    	
+			def.setSchema(start);
+			def.setElementName("descriptionDto");
+			
+			defs.getDefinitions().add(def);
+			
+		} 
+		catch (IOException | TransformerException | JAXBException e) {
+			Logger.log(Level.SEVERE, "cannot get schena from " + clazz.getName(), e );
+		}
+		
+		
+	}
+
+	/**
 	 * Generate the JSON schema from given PoJo class (mostly some ...DTO)
 	 * 
 	 * @param defs boomi ObjectDefinition collection
 	 * @param clazz the class to be serialized
 	 */
-	private void getSchemaFromClass(ObjectDefinitions defs, Class<?> clazz) {
+	private void getJsonSchemaFromClass(ObjectDefinitions defs, Class<?> clazz) {
 		
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -160,6 +219,9 @@ private static final Logger Logger = java.util.logging.Logger.getLogger(MapsBrow
 //	   return listField;
 //	}
 	
+	/**
+	 * Create a list of so called "Object Types". Actually, these are names for the provided data objects provided by the operation, which is called.
+	 */
 	@Override
 	public ObjectTypes getObjectTypes() {
 		
@@ -177,33 +239,8 @@ private static final Logger Logger = java.util.logging.Logger.getLogger(MapsBrow
 	}
 
 	/**
-	 * Init the MaPl REST wrapper and login to MaPl with the credentials from the connector context
-	 * 
-	 * @return
+	 * Return the Marketing Planner Connection Object
 	 */
-	private boolean initRestWrapperAndLogin() {
-		PropertyMap props = this.getContext().getConnectionProperties();
-		
-		String serviceUrl = props.getProperty("url");
-		String login = props.getProperty("login");
-		String password = props.getProperty("password");
-		
-		Logger.severe("Login to " + serviceUrl + " with " + login + " / " + password);
-		
-		/*
-		 * we need to pass in the connector cache for the credentials (tokens) to be persisted there
-		 */
-		restWrapper = new MapsRestWrapper(serviceUrl, this.getContext().getConnectorCache());
-		
-		/*
-		 * the "startLogin" method checks for cached credentials and if not available, starts the JWT login!
-		 */
-		boolean loggedIn = restWrapper.startLogin(login, password);
-		Logger.severe("success: " + Boolean.toString(loggedIn));
-		
-		return loggedIn;
-	}
-
 	@Override
     public MapsConnection getConnection() {
         return (MapsConnection) super.getConnection();
@@ -215,53 +252,26 @@ private static final Logger Logger = java.util.logging.Logger.getLogger(MapsBrow
 	@Override
 	public void testConnection() {
 		
-		
-		boolean r = this.initRestWrapperAndLogin();
-		
-		Logger.log(Level.INFO, Arrays.toString(this.getContext().getConnectorCache().entrySet().toArray()));  
-		
-		if ( !r ) {
-			throw new ConnectorException("MaPl connection not established", new IOException("Connection Error"));
-		}
-		
 		try {
+			MapsRestWrapper restWrapper = MapsHelpers.initRestWrapperAndLogin(getContext());
 			
-			PropertyMap props = this.getContext().getConnectionProperties();
+			Logger.log(Level.INFO, Arrays.toString(this.getContext().getConnectorCache().entrySet().toArray()));  
 			
-			String serviceUrl = props.getProperty("url");
-			String login = props.getProperty("login");
-			String password = props.getProperty("password");
-			
-			DseServiceV2 dseService = new DseServiceV2(new URL( StringUtils.stripEnd(serviceUrl, "/") + "/webservices/dse/v2/") );
-			
-			DsePortTypeV2 port = dseService.getDsePortV2();
-
-			BindingProvider prov = (BindingProvider)port;
-			prov.getRequestContext().put(BindingProvider.USERNAME_PROPERTY, login);
-			prov.getRequestContext().put(BindingProvider.PASSWORD_PROPERTY, password);
-			
-			/*
-			 * in order to test the connection, we just search for one job.
-			 */
-			DetailedList jobs = port.findAllJobs(false, 0, 1);
-			
-			if ( jobs != null && jobs.isSuccess() ) {
-				List<DetailedDto> jobList = jobs.getDesriptions();
-				
-				for ( DetailedDto jobDesc : jobList ) {
-					Logger.severe("found " + jobDesc.getTopicName() + " with id " + jobDesc.getId());
-				}
+			if ( restWrapper == null ) {
+				throw new ConnectorException("MaPl connection not established", new IOException("Connection Error"));
 			}
-			else {
+			
+			DsePortTypeV2 port = JMHelpers.initJobManagerAndLogin(this.getContext());
+			
+			if ( port == null )
 				throw new ConnectorException("JM connection not established", new IOException("Connection Error"));
-			}
 			
 		} 
-		catch (MalformedURLException e) {
+		catch ( Exception  e) {
 			Logger.log(Level.SEVERE, "an error", e);
 		}
 		
  		
 	}
-
+	
 }
