@@ -1,6 +1,5 @@
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FilterType.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindVariablesByTechnicalNames.java
-C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\BrandMakerJMConnector.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\mapl\MapsConnection.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindVariableTypes.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\org\json\XMLTokener.java
@@ -25,7 +24,7 @@ C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\VariableHistoryResult.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\BrandMakerConnector.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\CreateV2Response.java
-C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\BrandMakerJMCreateOperation.java
+C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\mapl\MapsHelpers.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\DseServiceV2.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindAllCustomStructuresResponse.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindAllFilterResponse.java
@@ -39,7 +38,6 @@ C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\Create.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\DseObjectTypeDto.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\LocalesResult.java
-C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\BrandMakerJMConnection.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\VariableTypeDto.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindAllCustomStructures.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\ForwardDseObjectResponse.java
@@ -55,6 +53,8 @@ C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\org\json\JSONArray.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindAllProducts.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\SetStateResponse.java
+C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\JMConnection.java
+C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\JMUpdateOperation.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\LocaleDto.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\org\json\JSONException.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\InnerWorkflowStepDto.java
@@ -68,7 +68,6 @@ C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\AssigneeDto.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\WorkflowStepDto.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FilterDto.java
-C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\BrandMakerJMBrowser.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\DseObjectNotFoundFault.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\DuplicateAreaFault_Exception.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\VariableHistoryDescription.java
@@ -96,16 +95,16 @@ C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindByIdsResponse.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\SavedFilterDto.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\UpdateVariable.java
+C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\JMQueryOperation.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\DetailedList.java
-C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\BrandMakerJMUpdateOperation.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\DuplicateAreaFault.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\UpdateDseSchemaFrom15To20Response.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindDseObjectTypesResponse.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\UpdateGrid.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\BrandMakerBrowser.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\org\json\Cookie.java
-C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\BrandMakerJMQueryOperation.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\InternalServerFault.java
+C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\util\XmlUtils.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\CustomObjectAttributeDto.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindDseObjectTypes.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\PrefillingDto.java
@@ -117,9 +116,10 @@ C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FiltersList.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindByIdResponse.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\UpdateVariableResponse.java
+C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\JMGetOperation.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\DseObjectNotFoundFault_Exception.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\UpdateRelationResponse.java
-C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\mapl\MapsConnectionTester.java
+C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\JMCreateOperation.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\GetLastChangesByIdResponse.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\org\json\HTTP.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindVariablesByTypeResponse.java
@@ -137,7 +137,6 @@ C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\mapl\MapsQueryOperation.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindByFilterResponse.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\AreaNotFoundFault_Exception.java
-C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\BrandMakerJMGetOperation.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\DseWebServiceFault.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\DatasourceDto.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindByFilterId.java
@@ -153,6 +152,6 @@ C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\org\json\JSONStringer.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindByIds.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\FindAllJobsResponse.java
+C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\jm\JMHelpers.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\CustomObjectDto.java
-C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\boomi\mapl\MapsBrowser.java
 C:\Users\axel.amthor\git\boomi\brandmaker-connector\BrandMakerMaPl\src\main\java\com\brandmaker\soap\jobmanager\DseObjectTypeList.java
