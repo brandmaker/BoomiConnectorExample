@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="windows-1252"?><GenericConnectorDescriptor>
-  <operation types="GET"/>
-  <operation types="QUERY"/>
-  <operation types="CREATE"/>
-  <operation types="UPDATE"/>
-</GenericConnectorDescriptor>
