@@ -23,8 +23,13 @@ public class JMHelpers {
 	private static final Logger Logger = java.util.logging.Logger.getLogger(JMHelpers.class.getName());
 	
 	/**
-	 * Returns a JobManager service port
+	 * Returns a JobManager SOAP service port
 	 * 
+	 * In order to test the connection and the validity of the given credentials, a search for "all jobs" with a limit to 1 is executed. 
+	 * Even if there are no jobs at all, we expect to not to get an error. If the operation is not successful, we assume improper credentials and throw a ConnectorException
+	 * 
+	 * @param context operation context
+	 * @return Job Manager soap service port or null in case of error
 	 * @throws MalformedURLException
 	 * @throws ConnectorException
 	 */

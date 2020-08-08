@@ -6,10 +6,9 @@
   <name>BrandMaker boomi connectors</name>
   <packaging>pom</packaging>
   
+  
   <modules>
-  	<module>../BrandMakerJM</module>
   	<module>../BrandMakerMaPl</module>
-  	
   </modules>
   
 </project>

@@ -19,6 +19,7 @@ import org.w3c.dom.Element;
 import com.bm.maps.BMonthDTO;
 import com.bm.maps.NodeDTO;
 import com.bm.maps.TreeDTO;
+import com.boomi.connector.api.BrowseContext;
 import com.boomi.connector.api.ConnectionTester;
 import com.boomi.connector.api.ConnectorException;
 import com.boomi.connector.api.ContentType;
@@ -28,6 +29,7 @@ import com.boomi.connector.api.ObjectDefinitions;
 import com.boomi.connector.api.ObjectType;
 import com.boomi.connector.api.ObjectTypes;
 import com.boomi.connector.util.BaseBrowser;
+import com.boomi.connector.util.BaseConnection;
 import com.brandmaker.boomi.OperationsConstants.ConnectorOperations;
 import com.brandmaker.boomi.jm.JMHelpers;
 import com.brandmaker.boomi.mapl.MapsConnection;
@@ -191,33 +193,34 @@ public class BrandMakerBrowser extends BaseBrowser implements ConnectionTester {
 	}
 
 	/**
-	* Creates a selectable field input for the Operation.
+	* Creates a field input for the Operation.
 	* @return BrowseField
+	
+		private BrowseField createListField(){
+		   BrowseField listField = new BrowseField();
+		   // Mandatory to set an ID
+		   listField.setId("listField");
+		   // User Friendly Label, defaults to ID if not given.
+		   listField.setLabel("List Field");
+		   // Mandatory to set a DataType. This Data Type can also be String, Integer for Lists
+		   listField.setType(DataType.STRING);
+	
+		   for(int i = 0; i< 4; i++){
+		       AllowedValue allowedValue = new AllowedValue();
+		       allowedValue.setLabel(String.valueOf(i));
+		       allowedValue.setValue(String.valueOf(i));
+		       listField.getAllowedValues().add(allowedValue);
+		   }
+		  
+		   // Optional Help Text for the String Field
+		   listField.setHelpText("List of String Fields");
+		   // Optional Default Value for String Field, the default field must match one of the selectable fields. In this case the default will be 2.
+		   listField.setDefaultValue("2");
+		   // The display type can be of Radio Button or List, if not given, the default will be list.
+		   listField.setDisplayType(DisplayType.LIST);
+		   return listField;
+		}
 	*/
-//	private BrowseField createListField(){
-//	   BrowseField listField = new BrowseField();
-//	   // Mandatory to set an ID
-//	   listField.setId("listField");
-//	   // User Friendly Label, defaults to ID if not given.
-//	   listField.setLabel("List Field");
-//	   // Mandatory to set a DataType. This Data Type can also be String, Integer for Lists
-//	   listField.setType(DataType.STRING);
-//
-//	   for(int i = 0; i< 4; i++){
-//	       AllowedValue allowedValue = new AllowedValue();
-//	       allowedValue.setLabel(String.valueOf(i));
-//	       allowedValue.setValue(String.valueOf(i));
-//	       listField.getAllowedValues().add(allowedValue);
-//	   }
-//	  
-//	   // Optional Help Text for the String Field
-//	   listField.setHelpText("List of String Fields");
-//	   // Optional Default Value for String Field, the default field must match one of the selectable fields. In this case the default will be 2.
-//	   listField.setDefaultValue("2");
-//	   // The display type can be of Radio Button or List, if not given, the default will be list.
-//	   listField.setDisplayType(DisplayType.LIST);
-//	   return listField;
-//	}
 	
 	/**
 	 * Create a list of so called "Object Types". Actually, these are names for the provided data objects provided by the operation, which is called.
@@ -239,15 +242,17 @@ public class BrandMakerBrowser extends BaseBrowser implements ConnectionTester {
 	}
 
 	/**
-	 * Return the Marketing Planner Connection Object
+	 * Return the Connection Object
 	 */
 	@Override
-    public MapsConnection getConnection() {
-        return (MapsConnection) super.getConnection();
+    public BaseConnection<BrowseContext> getConnection() {
+        return super.getConnection();
     }
 
 	/**
-	 * test the connection to MaPl and to JM
+	 * Test the connection to Marketing Planner and to Job Manager. Currently, both Modules have different login mechanics:
+	 * Marketing Planner needs a valid JWT Token which needs to be retrieved first.
+	 * Job Manager has HTTP Basic Authentication.
 	 */
 	@Override
 	public void testConnection() {

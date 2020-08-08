@@ -15,8 +15,10 @@ import com.brandmaker.boomi.mapl.MapsGetOperation;
 import com.brandmaker.boomi.mapl.MapsQueryOperation;
 
 /**
- * "Master" connector to the BrandMaker suite. Currently, it implements only few MaPl end-points. It can be extended by just adding new Operations to OperationsConstants and extending the switches below accordingly.
- * The according browser, get, query, create and update classes have to be implemented then according to the given MaPl example.
+ * "Master" connector to the BrandMaker suite. Currently, it implements few Marketing Planner and Job Manager end-points. It can be extended by just adding new Operations to 
+ * OperationsConstants and extending the switches below accordingly. The according browser, get, query, create and update classes have to be implemented then according to the given MaPl example.
+ * 
+ * @see OperationsConstants#OperationsConstants()
  * 
  * @author axel.amthor
  *
@@ -40,6 +42,7 @@ public class BrandMakerConnector extends BaseConnector {
 		
 		switch ( objectType ) {
 			case CREATEJOB:
+				Logger.severe( "Invoking Job Manager Sub Connector");
 				return new JMCreateOperation(createJMConnection(context));
 				
 			default:
