@@ -19,6 +19,8 @@ import com.brandmaker.boomi.mapl.MapsQueryOperation;
  * It can be extended by just adding new Operations to OperationsConstants and extending the switches below accordingly.
  * The according browser, get, query, create and update classes have to be implemented then according to the given MaPl example.
  * 
+ * @see OperationsConstants#OperationsConstants()
+ * 
  * @author axel.amthor
  *
  */
