@@ -11,7 +11,8 @@ public class MapsHelpers {
 	private static final Logger Logger = java.util.logging.Logger.getLogger(MapsHelpers.class.getName());
 	
 	/**
-	 * Init the MaPl REST wrapper and login to MaPl with the credentials from the connector context
+	 * Init the Marketing Planner REST wrapper and login to with the credentials from the connector context. 
+	 * The returned tokens are stored in the connector cache ({@link BrowseContext#getConnectorCache()}) for further invocations.
 	 * 
 	 * @return
 	 */

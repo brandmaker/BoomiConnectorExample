@@ -19,7 +19,6 @@ import com.boomi.connector.api.GetRequest;
 import com.boomi.connector.api.ObjectIdData;
 import com.boomi.connector.api.OperationResponse;
 import com.boomi.connector.api.OperationStatus;
-import com.boomi.connector.api.PropertyMap;
 import com.boomi.connector.api.ResponseUtil;
 import com.boomi.connector.util.BaseGetOperation;
 import com.brandmaker.boomi.OperationsConstants;

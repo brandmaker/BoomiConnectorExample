@@ -23,7 +23,11 @@ public class JMHelpers {
 	private static final Logger Logger = java.util.logging.Logger.getLogger(JMHelpers.class.getName());
 	
 	/**
-	 * Returns a JobManager service port
+	 * Returns a JobManager service port. In order to test the login, a "findAllJobs" operation is executed with a limit to 1.
+	 * In case of an error, a {@link ConnectorException} is thrown.
+	 * 
+	 * @param context Operation Context
+	 * @return connected SOAP service port
 	 * 
 	 * @throws MalformedURLException
 	 * @throws ConnectorException

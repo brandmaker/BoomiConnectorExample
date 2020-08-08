@@ -7,8 +7,6 @@ public class MapsConnection extends BaseConnection {
 
 	public MapsConnection(BrowseContext context) {
 		
-		
-		
 		super(context);
 	}
 	
