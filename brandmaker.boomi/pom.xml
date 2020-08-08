@@ -7,8 +7,8 @@
   <packaging>pom</packaging>
   
   
-  <modules>
-  	<module>../BrandMakerMaPl</module>
-  </modules>
   
+  <modules>
+  	<module>../BrandMakerConnector</module>
+  </modules>
 </project>

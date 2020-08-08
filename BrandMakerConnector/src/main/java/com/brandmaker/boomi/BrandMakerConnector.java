@@ -16,8 +16,8 @@ import com.brandmaker.boomi.mapl.MapsQueryOperation;
 
 /**
  * "Master" connector to the BrandMaker suite. Currently, it implements only few Marketing Planner and Job Manager end-points. 
- * It can be extended by just adding new Operations to OperationsConstants and extending the switches below accordingly.
- * The according browser, get, query, create and update classes have to be implemented then according to the given MaPl example.
+ * It can be extended by just adding new Operations to {@link OperationsConstants} and extending the switches below accordingly.
+ * The according browser, get, query, create and update classes have to be implemented then according to the given Planner and Job Manager examples.
  * 
  * @see OperationsConstants#OperationsConstants()
  * 
