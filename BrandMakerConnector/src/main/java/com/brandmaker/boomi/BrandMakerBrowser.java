@@ -103,7 +103,7 @@ public class BrandMakerBrowser extends BaseBrowser implements ConnectionTester {
 				getJsonSchemaFromClass(defs, BMonthDTO.class);
 				break;
 				
-			case NODE:
+			case NODES:
 			default:
 				getJsonSchemaFromClass(defs, NodeDTO[].class);
 			

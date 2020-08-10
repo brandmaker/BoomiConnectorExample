@@ -61,7 +61,7 @@ public class BrandMakerConnector extends BaseConnector {
 			case TREES:
 			case YEAR:
 			case BUDGET:
-			case NODE:
+			case NODES:
 				Logger.severe( "Invoking Marketing Planner Sub Connector");
 				return new MapsGetOperation(createMapsConnection(context));
 				
@@ -81,7 +81,7 @@ public class BrandMakerConnector extends BaseConnector {
 			case TREES:
 			case YEAR:
 			case BUDGET:
-			case NODE:
+			case NODES:
 				Logger.severe( "Invoking Marketing Planner Sub Connector");
 				return new MapsQueryOperation(createMapsConnection(context));
 				

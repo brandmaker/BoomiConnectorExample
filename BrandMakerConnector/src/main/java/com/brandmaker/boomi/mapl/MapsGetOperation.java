@@ -57,7 +57,7 @@ public class MapsGetOperation extends BaseGetOperation {
 				getCurrentYearOperation(response, requestData);
 				break;
 			
-			case NODE:
+			case NODES:
 				getNodeOperation(response, requestData);
 				break;
 				
