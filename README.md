@@ -24,3 +24,9 @@ Please make yourself familiar on the [boomi connector architecture](https://help
 * Travis-CI https://travis-ci.org/getting_started
 
 Furthermore, you need access to a BrandMaker instance with a user, who has access rights to Marketing Planner and Job Manager.
+
+
+## Project state
+
+[![Build Status](https://travis-ci.org/brandmaker/BoomiConnectorExample.svg?branch=master)](https://travis-ci.org/brandmaker/BoomiConnectorExample)
+
