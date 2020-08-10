@@ -3,14 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>brandmaker.boomi</groupId>
 	<artifactId>brandmaker.boomi.connector</artifactId>
 	<name>BrandMaker Boomi Connector</name>
 	<description>Dell Boomi Connector for BrandMAker</description>
 	
 	
 	<parent>
-		<groupId>brandmaker.boomi.connectors</groupId>
+		<groupId>brandmaker.boomi</groupId>
 		<artifactId>brandmaker.boomi.connectors</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../brandmaker.boomi</relativePath>
@@ -246,10 +245,10 @@
 	
 	<repositories>
 	
-		<!-- repository>
+		<repository>
 	  		<id>brandmaker-releases</id>
 	  		<url>https://nexus.brandmaker.com/content/repositories/releases</url>
-	  	</repository -->
+	  	</repository>
 	  	
 		<repository>
 	      <id>boomisdk</id>
@@ -261,12 +260,12 @@
 	
 	<pluginRepositories>
 	
-        <!--  pluginRepository>
+        <pluginRepository>
             <id>brandmaker-public-repositories</id>
             <url>https://nexus.brandmaker.com/content/groups/public</url>
-        </pluginRepository -->
+        </pluginRepository>
         
-        <!-- pluginRepository>
+        <pluginRepository>
             <id>central</id>
             <name>Brandmaker Maven Plugins Central Repository Proxy</name>
             <url>https://nexus.brandmaker.com/content/repositories/central</url>
@@ -278,7 +277,7 @@
                 <enabled>true</enabled>
                 <updatePolicy>never</updatePolicy>
             </releases>
-        </pluginRepository -->
+        </pluginRepository>
     </pluginRepositories>
 
 </project>
