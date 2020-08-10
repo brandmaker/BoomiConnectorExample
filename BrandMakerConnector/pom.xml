@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>brandmaker.boomi</groupId>
-	<artifactId>brandmaker.boomi.mapl</artifactId>
-	<name>Boomi MaPl Connector</name>
-	<description>Dell Boomi MaPL Connector: get new campaigns</description>
+	<artifactId>brandmaker.boomi.connector</artifactId>
+	<name>BrandMaker Boomi Connector</name>
+	<description>Dell Boomi Connector for BrandMAker</description>
 	
 	
 	<parent>
