@@ -9,10 +9,10 @@
 	
 	
 	<parent>
-		<groupId>brandmaker.boomi</groupId>
+		<groupId>brandmaker.boomi.connectors</groupId>
 		<artifactId>brandmaker.boomi.connectors</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../brandmaker.boomi</relativePath>
+		<relativePath>..</relativePath>
 	</parent>
 	
 	<organization>
